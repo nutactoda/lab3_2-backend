@@ -1,0 +1,15 @@
+{% macro create_card(books, first_card, last_card) %}
+    {% if books.title|length < last_card or first_card > last_card or first_card < 1 %}
+        {% for i in range(books.title|length) %}
+            <h3>{{ books.title[i] }}</h3>
+            <p>{{ books.author[i] }}</p>
+            <p>{{ books.price[i] }}</p>
+        {% endfor %}
+    {% else %}
+        {% for i in range(first_card - 1, last_card) %}
+            <h3>{{ books.title[i] }}</h3>
+            <p>{{ books.author[i] }}</p>
+            <p>{{ books.price[i] }}</p>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
